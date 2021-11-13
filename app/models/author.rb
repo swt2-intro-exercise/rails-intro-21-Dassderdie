@@ -5,7 +5,9 @@ class Author < ApplicationRecord
         @website = website
     end
 
-    def name()
-        @first_name + " " + @last_name
+    attr_accessor :first_name, :last_name, :website 
+    
+    def name
+        "#{@first_name} #{@last_name}"
     end
 end
