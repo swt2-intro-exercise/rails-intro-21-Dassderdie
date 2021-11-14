@@ -6,7 +6,6 @@ RSpec.describe Paper, type: :model do
         expect(paper.title).to eq("A")
         expect(paper.venue).to eq("B")
         expect(paper.year).to eq(1)
-        # has no authors
-        expect(Paper.reflect_on_all_associations(:authors_papers).collect {|a| a.paper_id}).to eq([])
+        expect(paper.authors).to eq([])
     end
 end
