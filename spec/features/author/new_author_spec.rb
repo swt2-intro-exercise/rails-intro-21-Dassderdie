@@ -22,4 +22,14 @@ describe "New author page", type: :feature do
       find('input[type="submit"]').click
       expect(Author.count).to eq(1)
   end
+
+  it "should show errors when trying to create an invalid author" do
+      visit new_author_path
+      page.fill_in 'author[first_name]', with: 'Alan'
+      page.fill_in 'author[last_name]', with: ''
+      page.fill_in 'author[homepage]', with: 'http://wikipedia.org/Alan_Turing'
+      find('input[type="submit"]').click
+      expect(page).to have_text('Last name can\'t be blank')
+
+  end
 end
